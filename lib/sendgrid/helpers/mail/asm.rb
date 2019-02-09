@@ -4,7 +4,6 @@ module SendGrid
   class ASM
 
     def initialize(options = {})
-
       group_id = options.fetch(:group_id, nil)
       groups_to_display = options.fetch(:groups_to_display, nil)
 
