@@ -2,7 +2,12 @@ require 'json'
 
 module SendGrid
   class ASM
-    def initialize(group_id: nil, groups_to_display: nil)
+
+    def initialize(options = {})
+
+      group_id = options.fetch(:group_id, nil)
+      groups_to_display = options.fetch(:groups_to_display, nil)
+
       @group_id = group_id
       @groups_to_display = groups_to_display
     end

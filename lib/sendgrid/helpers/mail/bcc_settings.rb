@@ -2,7 +2,11 @@ require 'json'
 
 module SendGrid
   class BccSettings
-    def initialize(enable: nil, email: nil)
+
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
+      email = options.fetch(:email, nil)
+
       @enable = enable
       @email = email
     end

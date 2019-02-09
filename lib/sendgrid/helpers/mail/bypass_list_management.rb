@@ -2,7 +2,8 @@ require 'json'
 
 module SendGrid
   class BypassListManagement
-    def initialize(enable: nil)
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
       @enable = enable
     end
 
@@ -22,7 +23,9 @@ module SendGrid
   end
 
   class SandBoxMode
-    def initialize(enable: nil)
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
+
       @enable = enable
     end
 

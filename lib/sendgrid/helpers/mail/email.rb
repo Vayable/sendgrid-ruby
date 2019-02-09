@@ -5,7 +5,10 @@ module SendGrid
 
     attr_accessor :email, :name
 
-    def initialize(email: nil, name: nil)
+    def initialize(options = {})
+      email = options.fetch(:email, nil)
+      name = options.fetch(:name, nil)
+
       if name
         @email = email
         @name = name

@@ -5,12 +5,20 @@ module SendGrid
     alias :open_tracking :open
     alias :subscription_tracking :subscription
 
-    def self.fetch(sendgrid_client:, name:, query_params:)
+    def self.fetch(options = {})
+      sendgrid_client = options.fetch(:sendgrid_client, nil)
+      name = options.fetch(:name, nil)
+      query_params = options.fetch(:query_params, nil)
+
       name = scrub_alias_names(name.to_s)
       sendgrid_client.tracking_settings.public_send(name).get(query_params: query_params)
     end
 
-    def self.update(sendgrid_client:, name:, request_body:)
+    def self.update(options = {})
+      sendgrid_client = options.fetch(:sendgrid_client, nil)
+      name = options.fetch(:name, nil)
+      request_body = options.fetch(:request_body, nil)
+
       name = scrub_alias_names(name.to_s)
       sendgrid_client.tracking_settings.public_send(name).patch(request_body: request_body)
     end

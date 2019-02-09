@@ -4,7 +4,9 @@ module SendGrid
   class IpManagement
     attr_accessor :sendgrid_client
 
-    def initialize(sendgrid_client:)
+    def initialize(options = {})
+      sendgrid_client = options.fetch(:sendgrid_client, nil)
+
       @sendgrid_client = sendgrid_client
     end
 

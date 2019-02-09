@@ -5,7 +5,9 @@ module SendGrid
 
     attr_accessor :type, :value
 
-    def initialize(type: nil, value: nil)
+    def initialize(options = {})
+      type = options.fetch(:type, nil)
+      value = options.fetch(:value, nil)
       @type = type
       @value = value
     end

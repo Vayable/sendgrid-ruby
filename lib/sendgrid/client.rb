@@ -14,7 +14,13 @@ module SendGrid
     #   - +version+ -> the version of the API you wish to access,
     #                  currently only "v3" is supported
     #
-    def initialize(api_key: '', host: nil, request_headers: nil, version: nil, impersonate_subuser: nil)
+    def initialize(options = {})
+      api_key = options.fetch(:api_key, '')
+      host = options.fetch(:host, nil)
+      request_headers = options.fetch(:request_headers, nil)
+      version = options.fetch(:version, nil)
+      impersonate_subuser = options.fetch(:impersonate_subuser, nil)
+
       @api_key             = api_key
       @host                = host ? host : 'https://api.sendgrid.com'
       @version             = version ? version : 'v3'

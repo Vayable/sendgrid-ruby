@@ -2,7 +2,11 @@ require 'json'
 
 module SendGrid
   class SpamCheck
-    def initialize(enable: nil, threshold: nil, post_to_url: nil)
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
+      threshold = options.fetch(:threshold, nil)
+      post_to_url = options.fetch(:post_to_url, nil)
+
       @enable = enable
       @threshold = threshold
       @post_to_url = post_to_url

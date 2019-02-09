@@ -2,7 +2,12 @@ require 'json'
 
 module SendGrid
   class SubscriptionTracking
-    def initialize(enable: nil, text: nil, html: nil, substitution_tag: nil)
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
+      text = options.fetch(:text, nil)
+      html = options.fetch(:html, nil)
+      substitution_tag = options.fetch(:substitution_tag, nil)
+
       @enable = enable
       @text = text
       @html = html

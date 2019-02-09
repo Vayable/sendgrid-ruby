@@ -2,7 +2,10 @@ require 'json'
 
 module SendGrid
   class Header
-    def initialize(key: nil, value: nil)
+    def initialize(options = {})
+      key = options.fetch(:key, nil)
+      value = options.fetch(:value, nil)
+
       @header = {}
       (key.nil? || value.nil?) ? @header = nil : @header[key] = value
     end

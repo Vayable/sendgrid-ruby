@@ -2,7 +2,11 @@ require 'json'
 
 module SendGrid
   class Footer
-    def initialize(enable: nil, text: nil, html: nil)
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
+      text = options.fetch(:text, nil)
+      html = options.fetch(:html, nil)
+
       @enable = enable
       @text = text
       @html = html

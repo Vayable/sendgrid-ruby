@@ -2,11 +2,19 @@ module SendGrid
   class UserSettingsDto
     attr_reader :enforced_tls
 
-    def self.fetch(sendgrid_client:, name:, query_params:)
+    def self.fetch(options = {})
+      sendgrid_client = options.fetch(:sendgrid_client, nil)
+      name = options.fetch(:name, nil)
+      query_params = options.fetch(:query_params, nil)
+
       sendgrid_client.user.settings.public_send(name).get(query_params: query_params)
     end
 
-    def self.update(sendgrid_client:, name:, request_body:)
+    def self.update(options = {})
+      sendgrid_client = options.fetch(:sendgrid_client, nil)
+      name = options.fetch(:name, nil)
+      request_body = options.fetch(:request_body, nil)
+
       sendgrid_client.user.settings.public_send(name).patch(request_body: request_body)
     end
   end

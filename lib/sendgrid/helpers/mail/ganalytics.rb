@@ -2,7 +2,15 @@ require 'json'
 
 module SendGrid
   class Ganalytics
-    def initialize(enable: nil, utm_source: nil, utm_medium: nil, utm_term: nil, utm_content: nil, utm_campaign: nil, utm_name: nil)
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
+      utm_source = options.fetch(:utm_source, nil)
+      utm_medium = options.fetch(:utm_medium, nil)
+      utm_term = options.fetch(:utm_term, nil)
+      utm_content = options.fetch(:utm_content, nil)
+      utm_campaign = options.fetch(:utm_campaign, nil)
+      utm_name = options.fetch(:utm_name, nil)
+
       @enable = enable
       @utm_source = utm_source
       @utm_medium = utm_medium

@@ -2,7 +2,10 @@ require 'json'
 
 module SendGrid
   class ClickTracking
-    def initialize(enable: nil, enable_text: nil)
+    def initialize(options = {})
+      enable = options.fetch(:enable, nil)
+      email = options.fetch(:email, nil)
+
       @enable = enable
       @enable_text = enable_text
     end

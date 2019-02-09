@@ -2,7 +2,10 @@ require 'json'
 
 module SendGrid
   class Section
-    def initialize(key: nil, value: nil)
+    def initialize(options = {})
+      key = options.fetch(:key, nil)
+      value = options.fetch(:value, nil)
+
       @section = {}
       (key.nil? || value.nil?) ? @section = nil : @section[key] = value
     end

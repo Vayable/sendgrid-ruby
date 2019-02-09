@@ -2,7 +2,10 @@ require 'json'
 
 module SendGrid
   class CustomArg
-    def initialize(key: nil, value: nil)
+    def initialize(options = {})
+      key = options.fetch(:key, nil)
+      value = options.fetch(:value, nil)
+
       @custom_arg = {}
       (key.nil? || value.nil?) ? @custom_arg = nil : @custom_arg[key.to_s] = value.to_s
     end

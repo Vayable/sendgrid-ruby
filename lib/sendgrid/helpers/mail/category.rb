@@ -4,7 +4,9 @@ module SendGrid
   class Category
     attr_accessor :name
 
-    def initialize(name: nil)
+    def initialize(options = {})
+      name = options.fetch(:name, nil)
+
       @name = name
     end
 

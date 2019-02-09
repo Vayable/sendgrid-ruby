@@ -2,7 +2,10 @@ require 'json'
 
 module SendGrid
   class Substitution
-    def initialize(key: nil, value: nil)
+    def initialize(options = {})
+      key = options.fetch(:key, nil)
+      value = options.fetch(:value, nil)
+
       @substitution = {}
       (key.nil? || value.nil?) ? @substitution = nil : @substitution[key] = value
     end
